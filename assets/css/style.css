@@ -1,13 +1,41 @@
+/* Theme variables */
 :root {
     --dark: #1a1a1a;
     --light: #f7eef4;
-    --primary: #d41f15; /*~PANTONE 2347 C*/
-    --secondary: #f86307; /*~PANTONE 165 C*/
-    --extra: #ffedeb; /*white shifted twards secondary*/
+    --primary: #d41f15; /* Approx. PANTONE 2347 C */
+    --secondary: #f86307; /* Approx. PANTONE 165 C */
+    --extra: #ffedeb; /* White shifted toward the secondary color */
     --text: #1a1a1a;
     --text-light: #f7eef4;
 
     font-size: large;
+}
+
+
+@font-face {
+    font-family: 'Body';
+    src: url("/assets/fonts/body/Rajdhani-Medium.ttf") format("truetype");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Body-Bold';
+    src: url("/assets/fonts/body/Rajdhani-Bold.ttf") format("truetype");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Heading';
+    src: url("/assets/fonts/heading/Furore.otf") format("truetype");
+    font-weight: 800;
+}
+
+/* Page layout */
+body {
+    display: grid;
+    background-color: var(--light);
+    background-image: radial-gradient(color-mix(in srgb, var(--dark) 20%, transparent) 0.1rem, transparent 0.1rem);
+    background-size: 2rem 2rem;
 }
 
 header {
@@ -29,14 +57,14 @@ header {
 }
 
 .header-left, .header-right {
-    flex: 1; /*  */
+    flex: 1;
     display: flex;
     align-items: center;
     margin: 0.25rem;
 }
 
 .header-right {
-    justify-content: flex-end; /* Pushes the logo to the far right */
+    justify-content: flex-end;
 }
 .header-right > img{
     all: unset; /* Resets all inherited and non-inherited properties to their initial values */
@@ -51,21 +79,119 @@ header {
 
 }
 
-body{
+.content{
     display: grid;
-
-    /* New Space-Themed Background */
-    background-color: var(--light);
-    background-image: radial-gradient(color-mix(in srgb, var(--dark) 20%, transparent) 0.1rem, transparent 0.1rem);
-    background-size: 2rem 2rem;
+    grid-template-columns: auto fit-content(950px) minmax(275px, 325px)  0.5fr;
+    align-items: flex-start; /*center vertically*/
+    width: 100%;
 }
 
-p{
-    margin: 0.75rem 0;
+/* Content components */
+.color-hr { /* Colored replacement for a standard horizontal rule */
+    height: 0.2rem;
+    border-width:0;
+    background-color:var(--secondary);
+    margin: 0 0 0.6rem 0;
 }
+
+main{
+    grid-column: 2;
+}
+
+aside{
+    grid-column: auto;
+    width: 100%;
+    min-width: 275px;
+    max-width: 325px;
+    flex-shrink: 0;
+    justify-self: start;
+}
+
+
+
+article{
+    max-width: 950px;
+
+    background:var(--extra);
+    color: var(--text);
+    border: 0.2rem solid var(--dark);
+    box-shadow: 0.25rem 0.25rem 0 var(--primary);
+
+    transition: all 0.1s ease;
+    line-height: 0.9;
+    font-family: "Body";
+
+    margin: 1rem 0.75rem;
+    padding: 1rem;
+
+    h1, h2, h3, h4, h5, h6{
+        margin: 0.6rem 0;
+    }
+
+    section{
+        text-decoration: underline var(--secondary) 0.12em;
+    }
+
+    .number{
+        font-family: "Heading";
+        font-size: 0.75em;
+        margin: 0;
+        margin-bottom: 0.6em;
+    }
+}
+
+.services{
+    flex-grow: 1;
+    justify-content: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    max-width: 350px;
+    min-height: 5rem;
+
+    background:var(--extra);
+    color: var(--text);
+    border: 0.2rem solid var(--dark);
+    box-shadow: 0.25rem 0.25rem 0 var(--primary);
+    transition: all 0.1s ease;
+
+    font-family: "Body";
+
+    margin: 0.4rem 0.6rem;
+    padding: 0.6rem;
+
+    a{
+        text-decoration: none;
+    }
+
+    .number{
+        margin: 0.2rem 0px 0.4rem 0px;
+    }
+
+    .a-internal {
+        margin-top: auto;
+    }
+
+    .a-external {
+        margin-top: auto;
+    }
+
+}
+
+.card:hover{
+    box-shadow: 0px 0px 0 0px var(--primary);
+    transform: translate(0.13rem, 0.13rem);
+}
+
+
+/* Base elements */
 
 table{
-    border-collapse: collapse; /*Overlaps borders of <tr>*/
+    border-collapse: collapse; /* Overlap adjacent table-cell borders */
     padding: 0.25rem;
     max-width: 18rem;
     width: 100%;
@@ -88,6 +214,27 @@ img{
     box-shadow: 0.2rem 0.2rem 0 var(--primary);
     margin: 0.3rem 0.4rem;
 }
+
+
+
+
+/* Text and links */
+p{
+    margin: 0.75rem 0;
+}
+
+
+
+.name { /* Name of a card or section */
+    font-family: "Body-bold";
+    font-size: 1.2rem;
+    margin: 0;
+}
+.description{
+    margin: 0.4rem 0 0.7rem 0;
+}
+
+
 
 a {
     display: inline-block;
@@ -176,126 +323,42 @@ a:active{
     transform: translate(0.13rem, 0.13rem);
 }
 
-.name{
-    font-family: "Body-bold";
-    font-size: 1.2rem;
-    margin: 0;
-}
-.description{
-    margin: 0.4rem 0 0.7rem 0;
+
+/*for pages where you dont want or need an aside but want a back button*/
+.content.noaside {
+    grid-template-columns: minmax(min-content, 1fr) minmax(0, 950px) minmax(0, 1fr);
 }
 
-
-.content{
-    display: grid;
-    grid-template-columns: 1fr fit-content(950px) minmax(275px, 325px)  0.5fr;
-    align-items: flex-start; /*center vertically*/
-    width: 100%;
-}
-
-.color-hr{ /*removes original line, replaces with a 2px tall colored box*/
-    height: 0.2rem;
-    border-width:0;
-    background-color:var(--secondary);
-    margin: 0 0 0.6rem 0;
-}
-
-main{
+.noaside > main {
     grid-column: 2;
 }
 
-aside{
-    grid-column: 3;
-    width: 100%;
-    min-width: 275px;
-    max-width: 325px;
-    flex-shrink: 0;
+.noaside > .a-back {
+    grid-column: 1;
+    grid-row: 1;
     justify-self: start;
 }
 
-
-
-article{
-    max-width: 950px;
-
-    background:var(--extra);
-    color: var(--text);
-    border: 0.2rem solid var(--dark);
-    box-shadow: 0.25rem 0.25rem 0 var(--primary);
-
-    transition: all 0.1s ease;
-    line-height: 0.9;
-    font-family: "Body";
-
-    margin: 1rem;
-    padding: 1rem;
-
-    h1, h2, h3, h4, h5, h6{
-        margin: 0.6rem 0;
-    }
-
-    section{
-        text-decoration: underline var(--secondary) 0.12em;
-    }
-
-    .number{
-        font-family: "Heading";
-        font-size: 0.75em;
-        margin: 0;
-        margin-bottom: 0.6em;
-    }
-}
-
-.services{
-    flex-grow: 1;
-    justify-content: flex-start;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.card{
-    display: flex;
-    flex-direction: column;
-    max-width: 350px;
-    min-height: 5rem;
-
-    background:var(--extra);
-    color: var(--text);
-    border: 0.2rem solid var(--dark);
-    box-shadow: 0.25rem 0.25rem 0 var(--primary);
-    transition: all 0.1s ease;
-
-    font-family: "Body";
-
-    margin: 0.4rem 0.6rem;
-    padding: 0.6rem;
-
-    a{
-        text-decoration: none;
-    }
-
-    .number{
-        margin: 0.2rem 0px 0.4rem 0px;
-    }
-
-    .a-internal {
-        margin-top: auto;
-    }
-
-    .a-external {
-        margin-top: auto;
-    }
-
-}
-
-.card:hover{
-    box-shadow: 0px 0px 0 0px var(--primary);
-    transform: translate(0.13rem, 0.13rem);
-}
+/*media queries to work on tablets and mobile*/
 
 @media (max-width: 1024px) {
     .content {
         grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+    }
+
+    .content.noaside {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .content.noaside > .a-back {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .content.noaside > main {
+        grid-column: 1;
+        grid-row: 2;
     }
     main{
         grid-row: 2;
@@ -319,12 +382,14 @@ article{
     width: max-content;
     }
 }
-/* Mobile Breakpoint for Phones */
 @media (max-width: 768px) {
     :root {
         font-size: 65%;
     }
     article{
         font-size: 14px;
+    }
+    table{
+        font-size: 12px;
     }
 }
