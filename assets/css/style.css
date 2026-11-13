@@ -14,19 +14,19 @@
 
 @font-face {
     font-family: 'Body';
-    src: url("/assets/fonts/body/Rajdhani-Medium.ttf") format("truetype");
+    src: url("/team12089_website/assets/fonts/body/Rajdhani-Medium.ttf") format("truetype");
     font-weight: 400;
 }
 
 @font-face {
     font-family: 'Body-Bold';
-    src: url("/assets/fonts/body/Rajdhani-Bold.ttf") format("truetype");
+    src: url("/team12089_website/assets/fonts/body/Rajdhani-Bold.ttf") format("truetype");
     font-weight: 700;
 }
 
 @font-face {
     font-family: 'Heading';
-    src: url("/assets/fonts/heading/Furore.otf") format("truetype");
+    src: url("/team12089_website/assets/fonts/heading/Furore.otf") format("truetype");
     font-weight: 800;
 }
 
