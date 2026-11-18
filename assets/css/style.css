@@ -215,8 +215,9 @@ img{
     margin: 0.3rem 0.4rem;
 }
 
-
-
+li{
+    margin-left: 1.5em;
+}
 
 /* Text and links */
 p{
